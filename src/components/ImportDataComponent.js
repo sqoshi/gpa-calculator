@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import XLSX from 'xlsx';
 import InputComponent from "./InputComponent";
 
-
+require('./ImportDataComponent.css')
 function remove_exam_mark(str) {
     if ((typeof str === 'string' || str instanceof String) && str.indexOf('(E)') !== -1) {
         str = str.replace(' (E)', '')
@@ -74,8 +74,9 @@ export default class ImportDataComponent extends Component {
     }
 
     render() {
-        return (
+        return (<div id={'input-div'}>
             <input style={{display: 'inline'}} type="file" onChange={this.loadFileXLSX.bind(this)}/>
-        );
+            </div>
+            );
     }
 }

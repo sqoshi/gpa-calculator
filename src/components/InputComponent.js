@@ -1,16 +1,12 @@
 import React, {Component} from 'react';
 
+require('./InputComponent.css')
+
+
 class InputComponent extends Component {
 
     state = {
         renderView: 0,
-        default: "a"
-    };
-
-    close = e => {
-        this.setState({
-            renderView: +e.target.value
-        });
     };
 
 

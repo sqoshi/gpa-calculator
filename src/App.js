@@ -3,7 +3,7 @@ import './App.css';
 
 import AppComponent from "./components/AppComponent"
 import InfoComponent from "./components/InfoComponent";
-import ImportData from "./components/ImportData";
+import ImportDataComponent from "./components/ImportDataComponent";
 
 function remove_el(element) {
     element.parentNode.removeChild(element);
@@ -37,30 +37,16 @@ function scale_2gpa(grade) {
     return result
 }
 
-function clear(element) {
-    for (let x of element) {
-        if (x.value === " " || x.value === "") {
-            let inp_el = x.parentNode.parentNode
-            inp_el.parentNode.removeChild(inp_el)
-        }
-    }
-}
-
 function get_child_inputs(element) {
     let arr = [];
-    let empty = false;
     for (let x of element) {
         if (x.value === " " || x.value === "") {
+            alert("You have left some empty inputs. We automatically deleted it, but please check if everything is fine.")
             let inp_el = x.parentNode.parentNode
             inp_el.parentNode.removeChild(inp_el)
-            empty = true
         } else {
             arr.push(parseInt(x.value))
         }
-    }
-    if (empty) {
-        alert("You have left some empty inputs.")
-        return
     }
     return arr
 }
@@ -78,7 +64,8 @@ function get_gpa(ects, grades) {
 class App extends Component {
 
     compute = () => {
-        let gpa = get_gpa(get_child_inputs(document.getElementsByClassName("ects-in")), get_child_inputs(document.getElementsByClassName("grades-in")))
+        let gpa = get_gpa(get_child_inputs(document.getElementsByClassName("ects-in")),
+            get_child_inputs(document.getElementsByClassName("grades-in")))
         alert("Your gpa is equal to " + gpa.toString())
     };
 
@@ -86,13 +73,20 @@ class App extends Component {
     render() {
         return (
             <div>
+                <p id={"header"}>GPA Calculator</p>
                 <div className="calculator-body">
-                    <h1>Simple GPA Calculator</h1>
-                    <InfoComponent/>
-                    <ImportData/>
-                    <AppComponent/>
-                    <button onClick={this.compute}>Compute GPA</button>
-                    <div id={'result-gpa'}></div>
+                    <div className="row">
+                        <div className="col">
+                            <InfoComponent/>
+                            <button style={{width:'100%',margin:'0'}} onClick={this.compute}>Compute GPA</button>
+
+                        </div>
+                        <div className="col">
+                            <ImportDataComponent/>
+                            <AppComponent/>
+                        </div>
+                    </div>
+
                 </div>
 
             </div>
