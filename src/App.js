@@ -3,6 +3,7 @@ import './App.css';
 
 import AppComponent from "./components/AppComponent"
 import InfoComponent from "./components/InfoComponent";
+import ImportData from "./components/ImportData";
 
 function remove_el(element) {
     element.parentNode.removeChild(element);
@@ -36,17 +37,31 @@ function scale_2gpa(grade) {
     return result
 }
 
-function get_child_inputs(element) {
-    let arr = [];
+function clear(element) {
     for (let x of element) {
         if (x.value === " " || x.value === "") {
             let inp_el = x.parentNode.parentNode
             inp_el.parentNode.removeChild(inp_el)
+        }
+    }
+}
+
+function get_child_inputs(element) {
+    let arr = [];
+    let empty = false;
+    for (let x of element) {
+        if (x.value === " " || x.value === "") {
+            let inp_el = x.parentNode.parentNode
+            inp_el.parentNode.removeChild(inp_el)
+            empty = true
         } else {
             arr.push(parseInt(x.value))
         }
     }
-
+    if (empty) {
+        alert("You have left some empty inputs.")
+        return
+    }
     return arr
 }
 
@@ -64,9 +79,7 @@ class App extends Component {
 
     compute = () => {
         let gpa = get_gpa(get_child_inputs(document.getElementsByClassName("ects-in")), get_child_inputs(document.getElementsByClassName("grades-in")))
-        console.log(gpa)
-        document.getElementById("result-gpa").style.fontSize = "16px"
-        document.getElementById("result-gpa").innerHTML = "Your gpa is equal to " + gpa.toString()
+        alert("Your gpa is equal to " + gpa.toString())
     };
 
 
@@ -76,10 +89,12 @@ class App extends Component {
                 <div className="calculator-body">
                     <h1>Simple GPA Calculator</h1>
                     <InfoComponent/>
+                    <ImportData/>
                     <AppComponent/>
+                    <button onClick={this.compute}>Compute GPA</button>
+                    <div id={'result-gpa'}></div>
                 </div>
-                <button onClick={this.compute}>Compute GPA</button>
-                <div id={'result-gpa'}></div>
+
             </div>
         );
     }

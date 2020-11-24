@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-class InputComponent extends Component {
+class InfoComponent extends Component {
     render() {
         return (
             <div className={"info-div"}>
@@ -89,4 +89,4 @@ class InputComponent extends Component {
 }
 
 
-export default InputComponent;
+export default InfoComponent;

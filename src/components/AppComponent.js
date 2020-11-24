@@ -30,7 +30,7 @@ class AppComponent extends Component {
 const ParentComponent = props => (
     <div className="input-content">
         <p>
-            <button onClick={props.addChild}> shot!</button>
+            <button onClick={props.addChild}> Add Row </button>
         </p>
         <div id="inputs-list">
             {props.children}
@@ -38,6 +38,6 @@ const ParentComponent = props => (
     </div>
 );
 
-const ChildComponent = props => <InputComponent />//<div>{"I am child " + props.number}</div>;
+const ChildComponent = props => <InputComponent />
 
 export default AppComponent;
