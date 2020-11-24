@@ -42,7 +42,7 @@ function insert_inputs(data) {
 
 }
 
-export default class ImportData extends Component {
+export default class ImportDataComponent extends Component {
     constructor(props) {
         super(props);
         this.state = {
