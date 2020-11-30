@@ -36,5 +36,18 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "description": "* [Introduction](#Introduction) * [General info](#general-info) * [Code Example](#code-example) * [Launch](#launch) * [Installation](#installation) * [Technologies](#technologies)",
+  "main": "index.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sqoshi/gpa-calculator.git"
+  },
+  "author": "Piotr Popis",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sqoshi/gpa-calculator/issues"
+  },
+  "homepage": "https://github.com/sqoshi/gpa-calculator#readme"
 }
