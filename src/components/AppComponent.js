@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import InputComponent from "./InputComponent";
+import ReactDOM from 'react-dom'
 
 require('./AppComponent.css')
 
@@ -25,8 +26,6 @@ function delete_retakes(element, val) {
     for (let x of element) {
         if (x.value.toString() === val.toString()) {
             to_del.push(x)
-            let inp_el = x.parentNode.parentNode
-            inp_el.parentNode.removeChild(inp_el)
         }
 
     }
@@ -52,7 +51,6 @@ class AppComponent extends Component {
         let le = document.getElementsByClassName('ects-in')
         let i = 0;
         while (le.length > 0) {
-            console.log(le)
             let inp_el = le[i].parentNode.parentNode
             inp_el.parentNode.removeChild(inp_el)
         }
